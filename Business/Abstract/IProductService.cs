@@ -2,11 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Utilities.Results;
 
 namespace Business.Abstract
 {
     public interface IProductService
     {
-        List<Product> GetList();
+        IDataResult<Product> GetById(int productId);
+        IDataResult<List<Product>> GetList();
+        IDataResult<List<Product>> GetListByCategory(int categoryId);
+        IResult Add(Product product);
+        IResult Delete(Product product);
+        IResult Update(Product product);
     }
 }
