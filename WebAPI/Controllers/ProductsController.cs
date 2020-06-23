@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -16,7 +17,8 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet("getlist")]
+        [HttpGet("getall")]
+        [Authorize(Roles = "Product.List")]
         public IActionResult GetList()
         {
             var result =_productService.GetList();
